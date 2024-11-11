@@ -12,3 +12,10 @@ spring:
     show-sql: true
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+  waiting-list:
+    default:
+      capacity: 15
+      mode: part_time
+      algorithm: fifo
