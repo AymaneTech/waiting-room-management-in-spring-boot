@@ -37,7 +37,8 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run mvn install (without running tests)
-        run: mvn install -DskipTests
+        run: mvn install
+        # -DskipTests
 
       - name: Build docker image
         run: docker build -t it-survey-api:latest .
