@@ -1,6 +1,7 @@
 package com.wora.waitingRoom.waitingList.domain.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
@@ -32,7 +33,7 @@ public class WaitingList {
     @AttributeOverride(name = "value", column = @Column(name = "id"))
     private WaitingListId id;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private Integer capacity;
 
@@ -42,7 +43,9 @@ public class WaitingList {
     @Enumerated(EnumType.STRING)
     private Algorithm algorithm;
 
-    public WaitingList(LocalDateTime date, Integer capacity, Mode mode, Algorithm algorithm) {
+    private List<Visit> visits;
+
+    public WaitingList(LocalDate date, Integer capacity, Mode mode, Algorithm algorithm) {
         this.date = date;
         this.capacity = capacity;
         this.mode = mode;
