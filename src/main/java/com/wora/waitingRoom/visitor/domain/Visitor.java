@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -33,6 +34,7 @@ public class Visitor {
     @Embedded
     private Name name;
 
+    @OneToMany
     private List<Visit> visits;
 
     public Visitor(String firstName, String lastName) {

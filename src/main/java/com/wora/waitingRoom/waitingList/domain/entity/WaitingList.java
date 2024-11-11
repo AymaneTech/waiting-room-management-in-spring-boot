@@ -9,6 +9,7 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
@@ -43,6 +44,7 @@ public class WaitingList {
     @Enumerated(EnumType.STRING)
     private Algorithm algorithm;
 
+    @OneToMany
     private List<Visit> visits;
 
     public WaitingList(LocalDate date, Integer capacity, Mode mode, Algorithm algorithm) {
