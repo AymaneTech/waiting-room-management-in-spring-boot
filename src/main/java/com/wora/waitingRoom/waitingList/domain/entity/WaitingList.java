@@ -10,6 +10,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
+import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
+import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
 
 import lombok.Getter;
@@ -25,18 +27,25 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class WaitingList {
-    
-   @EmbeddedId
-   @AttributeOverride(name = "value", column = @Column(name = "id"))
-   private WaitingListId id;
 
-   private LocalDateTime date;
+    @EmbeddedId
+    @AttributeOverride(name = "value", column = @Column(name = "id"))
+    private WaitingListId id;
 
-   private Integer capacity;
+    private LocalDateTime date;
 
-   @Enumerated(EnumType.STRING)
-   private Mode mode;
+    private Integer capacity;
 
-   
-    
+    @Enumerated(EnumType.STRING)
+    private Mode mode;
+
+    @Enumerated(EnumType.STRING)
+    private Algorithm algorithm;
+
+    public WaitingList(LocalDateTime date, Integer capacity, Mode mode, Algorithm algorithm) {
+        this.date = date;
+        this.capacity = capacity;
+        this.mode = mode;
+        this.algorithm = algorithm;
+    }
 }
