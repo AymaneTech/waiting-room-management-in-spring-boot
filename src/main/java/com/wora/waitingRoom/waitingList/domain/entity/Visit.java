@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -14,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
 import com.wora.waitingRoom.waitingList.domain.valueObject.VisitId;
 
 import lombok.Getter;
