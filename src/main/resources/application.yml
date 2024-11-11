@@ -8,9 +8,9 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
       ddl-auto: update
     show-sql: true
-
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   profiles:
     active: dockerized
