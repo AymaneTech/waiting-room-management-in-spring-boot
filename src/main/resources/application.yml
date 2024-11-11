@@ -1,1 +1,16 @@
-spring.application.name=waitingRoom
+spring:
+  application:
+    name: It Survey
+  datasource:
+    url: jdbc:postgresql://localhost:5432/it_survey
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
+    show-sql: true
+
+  profiles:
+    active: dockerized
