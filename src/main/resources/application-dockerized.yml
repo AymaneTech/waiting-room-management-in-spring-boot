@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: It Survey
+  datasource:
+    url: jdbc:postgresql://localhost:5433/it-survey
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    org.springframework.security: debug
