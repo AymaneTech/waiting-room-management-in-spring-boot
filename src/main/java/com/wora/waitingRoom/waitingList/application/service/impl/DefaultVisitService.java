@@ -71,6 +71,6 @@ public class DefaultVisitService implements VisitService {
 
     private Visit findVisit(WaitingListId waitingListId, VisitorId visitorId) {
         return repository.findById(new VisitId(visitorId, waitingListId))
-                .orElseThrow(() -> new EntityNotFoundException("there is no visit for waiting list id: " + waitingListId + " and visitor id: " + visitorId));
+                .orElseThrow(() -> new EntityNotFoundException("there is no visit for waiting list id: " + waitingListId.value() + " and visitor id: " + visitorId.value()));
     }
 }

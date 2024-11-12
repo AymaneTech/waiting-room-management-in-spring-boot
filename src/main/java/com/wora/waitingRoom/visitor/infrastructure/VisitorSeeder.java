@@ -1,15 +1,13 @@
 package com.wora.waitingRoom.visitor.infrastructure;
 
-import java.util.List;
-
 import com.wora.waitingRoom.visitor.domain.Visitor;
 import com.wora.waitingRoom.visitor.domain.VisitorRepository;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
