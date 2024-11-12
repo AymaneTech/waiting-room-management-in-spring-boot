@@ -26,15 +26,14 @@ class DefaultVisitorServiceTest {
     private VisitorService sut;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         sut = new DefaultVisitorService(repository);
     }
 
     @Test
     void givenVisitorExists_whenFindEntityById_thenShouldReturnVisitor() {
         VisitorId visitorId = new VisitorId(2L);
-        Visitor expected = new Visitor("aymane", "el maini")
-                .setId(visitorId);
+        Visitor expected = new Visitor(2L, "aymane", "el maini");
 
         given(repository.findById(visitorId)).willReturn(Optional.of(expected));
 
