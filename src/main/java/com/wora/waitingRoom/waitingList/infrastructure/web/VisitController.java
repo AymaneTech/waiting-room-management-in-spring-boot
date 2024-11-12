@@ -25,7 +25,7 @@ public class VisitController {
         return new ResponseEntity<>(visit, HttpStatus.CREATED);
     }
 
-    @GetMapping("cancel/{waitingListId}/{visitorId}")
+    @PostMapping("cancel/{waitingListId}/{visitorId}")
     public ResponseEntity<VisitResponseDto> cancelSubscription(@PathVariable Long waitingListId,
                                                               @PathVariable Long visitorId) {
         VisitResponseDto visit = service.cancelSubscription(new WaitingListId(waitingListId), new VisitorId(visitorId));

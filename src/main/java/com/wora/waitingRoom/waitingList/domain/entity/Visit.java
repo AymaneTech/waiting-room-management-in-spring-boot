@@ -55,6 +55,7 @@ public class Visit {
         this.priority = priority;
         this.estimatedProcessingTime = estimatedProcessingTime;
         this.status = Status.WAITING;
+        this.arrivalTime = LocalTime.now();
     }
 
     public Visit cancelVisit() {
@@ -63,13 +64,12 @@ public class Visit {
             throw new VisitAlreadyCompletedException("Visit has already been canceled.");
         }
         this.status = Status.CANCELED;
-        this.endDate = LocalTime.now();
         return this;
     }
 
     public Visit beginVisit() {
         ensureVisitIsToday();
-        if (!isPending()) {
+        if (isPending()) {
             throw new VisitAlreadyCompletedException("Visit has already been started.");
         }
         this.status = Status.IN_PROGRESS;
