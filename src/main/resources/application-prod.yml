@@ -18,7 +18,7 @@ app:
     default:
       capacity: 15
       mode: part_time
-      algorithm: fifo
+      algorithm: hpf
 
   open-api:
     server:
