@@ -69,7 +69,7 @@ public class Visit {
 
     public Visit beginVisit() {
         ensureVisitIsToday();
-        if (isPending()) {
+        if (isInProgress()) {
             throw new VisitAlreadyCompletedException("Visit has already been started.");
         }
         this.status = Status.IN_PROGRESS;
@@ -88,10 +88,6 @@ public class Visit {
     }
 
     public boolean isInProgress() {
-        return this.status == Status.IN_PROGRESS;
-    }
-
-    public boolean isPending() {
         return this.status == Status.IN_PROGRESS;
     }
 
