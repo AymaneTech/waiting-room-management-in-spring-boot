@@ -3,6 +3,10 @@ package com.wora.waitingRoom.common.infrastructure.web;
 import com.wora.waitingRoom.common.domain.ErrorResponse;
 import com.wora.waitingRoom.common.domain.exception.EntityCreationException;
 import com.wora.waitingRoom.common.domain.exception.EntityNotFoundException;
+import com.wora.waitingRoom.waitingList.domain.exception.DuplicateSubscriptionException;
+import com.wora.waitingRoom.waitingList.domain.exception.VisitAlreadyCompletedException;
+import com.wora.waitingRoom.waitingList.domain.exception.VisitDateMismatchException;
+import com.wora.waitingRoom.waitingList.domain.exception.WaitingListDatePassedException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -94,7 +98,55 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 LocalDateTime.now(),
-                "this exception not specified, caught just by global exception",
+                e.getClass().getSimpleName(),
+                request.getDescription(false),
+                e.getMessage()
+        );
+    }
+
+    @ExceptionHandler(DuplicateSubscriptionException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse duplicateSubscriptionException(DuplicateSubscriptionException e, WebRequest request) {
+        return new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                LocalDateTime.now(),
+                "Duplicate Subscription",
+                request.getDescription(false),
+                e.getMessage()
+        );
+    }
+
+    @ExceptionHandler(VisitAlreadyCompletedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse visitAlreadyCompletedException(VisitAlreadyCompletedException e, WebRequest request) {
+        return new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                LocalDateTime.now(),
+                "Visit Already Completed",
+                request.getDescription(false),
+                e.getMessage()
+        );
+    }
+
+    @ExceptionHandler(VisitDateMismatchException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse visitDateMismatchException(VisitDateMismatchException e, WebRequest request) {
+        return new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                LocalDateTime.now(),
+                "Visit Date Mismatch",
+                request.getDescription(false),
+                e.getMessage()
+        );
+    }
+
+    @ExceptionHandler(WaitingListDatePassedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse waitingListDatePassed(WaitingListDatePassedException e, WebRequest request) {
+        return new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                LocalDateTime.now(),
+                "Waiting List Date Passed",
                 request.getDescription(false),
                 e.getMessage()
         );
