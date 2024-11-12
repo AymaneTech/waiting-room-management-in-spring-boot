@@ -1,6 +1,7 @@
 package com.wora.waitingRoom.waitingList.domain.entity;
 
 import com.wora.waitingRoom.visitor.domain.Visitor;
+import com.wora.waitingRoom.waitingList.domain.exception.VisitAlreadyCompletedException;
 import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
 import com.wora.waitingRoom.waitingList.domain.valueObject.VisitId;
 import jakarta.persistence.*;
@@ -10,6 +11,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -52,21 +54,34 @@ public class Visit {
         this.waitingList = waitingList;
         this.priority = priority;
         this.estimatedProcessingTime = estimatedProcessingTime;
+        this.status = Status.WAITING;
     }
 
     public Visit cancelVisit() {
+        ensureVisitIsToday();
+        if (status == Status.CANCELED || status == !Status.WAITING) {
+            throw new VisitAlreadyCompletedException("Visit has already been canceled.");
+        }
         this.status = Status.CANCELED;
         this.endDate = LocalTime.now();
         return this;
     }
 
     public Visit beginVisit() {
+        ensureVisitIsToday();
+        if (!isPending()) {
+            throw new VisitAlreadyCompletedException("Visit has already been started.");
+        }
         this.status = Status.IN_PROGRESS;
         this.startTime = LocalTime.now();
         return this;
     }
 
     public Visit completeVisit() {
+        ensureVisitIsToday();
+        if (!isInProgress()) {
+            throw new VisitAlreadyCompletedException("Visit has already been completed.");
+        }
         this.status = Status.FINISHED;
         this.endDate = LocalTime.now();
         return this;
@@ -78,5 +93,10 @@ public class Visit {
 
     public boolean isPending() {
         return this.status == Status.IN_PROGRESS;
+    }
+
+    private void ensureVisitIsToday() {
+        if (!waitingList.getDate().isEqual(LocalDate.now()))
+            throw new IllegalArgumentException("You can't start or complete or cancel a visit that is not today");
     }
 }
