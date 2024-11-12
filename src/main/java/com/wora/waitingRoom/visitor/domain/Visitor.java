@@ -1,5 +1,6 @@
 package com.wora.waitingRoom.visitor.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.AttributeOverride;
@@ -35,7 +36,7 @@ public class Visitor {
     private Name name;
 
     @OneToMany
-    private List<Visit> visits;
+    private List<Visit> visits = new ArrayList<>();
 
     public Visitor(String firstName, String lastName) {
         this.name = new Name(firstName, lastName);
