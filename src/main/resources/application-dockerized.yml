@@ -19,3 +19,16 @@ app:
       capacity: 15
       mode: part_time
       algorithm: fifo
+
+  open-api:
+    server:
+      url: http://localhost:8080
+      description: Waiting room management module api
+    info:
+      title: Waiting room management module
+      description: Waiting room management module
+      version: 1.0.0
+      contact:
+        name: Aymane El Maini
+        email: elmainiaymane03@gmail.com
+        url: https://aymaneelmaini.vercel.app

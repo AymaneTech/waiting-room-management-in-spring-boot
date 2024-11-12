@@ -1,5 +1,6 @@
 package com.wora.waitingRoom.config;
 
+import com.wora.waitingRoom.config.configurationProperties.OpenApiConfigurationProperties;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
@@ -13,24 +14,23 @@ import java.util.List;
 public class OpenApiConfig {
 
     @Bean
-    public OpenAPI defineOpenApi(){
+    public OpenAPI defineOpenApi(OpenApiConfigurationProperties props){
         Server server = new Server();
-        server.setUrl("http://localhost:8080");
-        server.setDescription("Development");
+        server.setUrl(props.server().url());
+        server.setDescription(props.server().description());
 
         Contact contact = new Contact();
-        contact.setName("Aymane El Maini");
-        contact.setEmail("elmainiaymane03@gmail.com");
-        contact.setUrl("https://aymaneelmaini.vercel.app");
+        contact.setName(props.info().contact().name());
+        contact.setEmail(props.info().contact().email());
+        contact.setUrl(props.info().contact().url());
 
         Info info = new Info()
-                .title("It survey management system API")
-                .version("1.0")
-                .description("the api exposes endpoints to manage and play it surveys")
+                .title(props.info().title())
+                .version(props.info().version())
+                .description(props.info().description())
                 .contact(contact);
 
         return new OpenAPI().info(info).servers(List.of(server));
-
     }
 
 }
