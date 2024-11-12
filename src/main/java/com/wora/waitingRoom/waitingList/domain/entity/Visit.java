@@ -1,26 +1,16 @@
 package com.wora.waitingRoom.waitingList.domain.entity;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
-import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
-import jakarta.persistence.AttributeOverride;
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
 import com.wora.waitingRoom.visitor.domain.Visitor;
+import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
 import com.wora.waitingRoom.waitingList.domain.valueObject.VisitId;
-
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.time.Duration;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "visits")
@@ -35,7 +25,7 @@ public class Visit {
     @AttributeOverride(name = "value", column = @Column(name = "id"))
     private VisitId id;
 
-    private LocalDateTime arrivalTime;
+    private LocalTime arrivalTime;
 
     private LocalTime startTime;
 
@@ -49,8 +39,44 @@ public class Visit {
     private Duration estimatedProcessingTime;
 
     @ManyToOne
+    @JoinColumn(name = "visitor_id", insertable = false, updatable = false)
     private Visitor visitor;
 
     @ManyToOne
+    @JoinColumn(name = "waiting_list_id", insertable = false, updatable = false)
     private WaitingList waitingList;
+
+    public Visit(Visitor visitor, WaitingList waitingList, Byte priority, Duration estimatedProcessingTime) {
+        this.id = new VisitId(visitor.getId(), waitingList.getId());
+        this.visitor = visitor;
+        this.waitingList = waitingList;
+        this.priority = priority;
+        this.estimatedProcessingTime = estimatedProcessingTime;
+    }
+
+    public Visit cancelVisit() {
+        this.status = Status.CANCELED;
+        this.endDate = LocalTime.now();
+        return this;
+    }
+
+    public Visit beginVisit() {
+        this.status = Status.IN_PROGRESS;
+        this.startTime = LocalTime.now();
+        return this;
+    }
+
+    public Visit completeVisit() {
+        this.status = Status.FINISHED;
+        this.endDate = LocalTime.now();
+        return this;
+    }
+
+    public boolean isInProgress() {
+        return this.status == Status.IN_PROGRESS;
+    }
+
+    public boolean isPending() {
+        return this.status == Status.IN_PROGRESS;
+    }
 }
