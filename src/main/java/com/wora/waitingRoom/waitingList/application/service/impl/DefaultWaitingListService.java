@@ -41,6 +41,11 @@ public class DefaultWaitingListService implements WaitingListService {
     }
 
     @Override
+    public WaitingList findEntityById(WaitingListId id) {
+        return orElseThrow(repository.findById(id), "waiting list", id.value());
+    }
+
+    @Override
     public WaitingListResponseDto create(WaitingListRequestDto dto) {
         WaitingList waitingList = WaitingList.builder()
                 .date(dto.date())
@@ -55,7 +60,7 @@ public class DefaultWaitingListService implements WaitingListService {
 
     @Override
     public WaitingListResponseDto update(WaitingListId id, WaitingListRequestDto dto) {
-        WaitingList waitingList = orElseThrow(repository.findById(id), "waiting list", id.value());
+        WaitingList waitingList = findEntityById(id);
 
         waitingList.setDate(dto.date())
                 .setCapacity(dto.capacity())
