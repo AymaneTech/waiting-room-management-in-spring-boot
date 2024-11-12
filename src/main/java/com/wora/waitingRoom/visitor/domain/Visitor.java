@@ -1,26 +1,17 @@
 package com.wora.waitingRoom.visitor.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.AttributeOverride;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-
 import com.wora.waitingRoom.waitingList.domain.entity.Visit;
-
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "visitors", uniqueConstraints = @UniqueConstraint(columnNames = { "first_name", "last_name" }))
+@Table(name = "visitors", uniqueConstraints = @UniqueConstraint(columnNames = {"first_name", "last_name"}))
 
 @Getter
 @Setter
@@ -40,5 +31,10 @@ public class Visitor {
 
     public Visitor(String firstName, String lastName) {
         this.name = new Name(firstName, lastName);
+    }
+
+    public Visitor(Long id, String firstName, String lastName) {
+        this(firstName, lastName);
+        this.id = new VisitorId(id);
     }
 }
