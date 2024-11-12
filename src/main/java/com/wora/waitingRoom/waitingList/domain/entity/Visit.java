@@ -59,7 +59,7 @@ public class Visit {
 
     public Visit cancelVisit() {
         ensureVisitIsToday();
-        if (status == Status.CANCELED || status == !Status.WAITING) {
+        if (status == Status.CANCELED || status != Status.WAITING) {
             throw new VisitAlreadyCompletedException("Visit has already been canceled.");
         }
         this.status = Status.CANCELED;
