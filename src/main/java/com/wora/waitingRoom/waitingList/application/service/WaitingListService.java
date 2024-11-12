@@ -5,6 +5,5 @@ import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListReque
 import com.wora.waitingRoom.waitingList.application.dto.response.WaitingListResponseDto;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
 
-public interface WaitingListService
-        extends CrudService<WaitingListId, WaitingListRequestDto, WaitingListResponseDto> {
+public interface WaitingListService extends CrudService<WaitingListId, WaitingListRequestDto, WaitingListResponseDto> {
 }

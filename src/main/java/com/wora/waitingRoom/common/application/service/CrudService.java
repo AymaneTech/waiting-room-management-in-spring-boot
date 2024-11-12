@@ -1,9 +1,11 @@
 package com.wora.waitingRoom.common.application.service;
 
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public interface CrudService<Id, RequestDto, ResponseDto> {
-    List<ResponseDto> findAll();
+    Page<ResponseDto> findAll(int pageNum, int pageSize);
 
     ResponseDto findById(Id id);
 

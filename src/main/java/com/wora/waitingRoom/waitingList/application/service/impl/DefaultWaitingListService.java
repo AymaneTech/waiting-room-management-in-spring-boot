@@ -1,6 +1,7 @@
 package com.wora.waitingRoom.waitingList.application.service.impl;
 
 import com.wora.waitingRoom.common.domain.exception.EntityNotFoundException;
+import com.wora.waitingRoom.config.configurationProperties.WaitingListConfigurationProperties;
 import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListRequestDto;
 import com.wora.waitingRoom.waitingList.application.dto.response.WaitingListResponseDto;
 import com.wora.waitingRoom.waitingList.application.mapper.WaitingListMapper;
@@ -8,13 +9,12 @@ import com.wora.waitingRoom.waitingList.application.service.WaitingListService;
 import com.wora.waitingRoom.waitingList.domain.entity.WaitingList;
 import com.wora.waitingRoom.waitingList.domain.repository.WaitingListRepository;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
-import com.wora.waitingRoom.config.configurationProperties.WaitingListConfigurationProperties;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.List;
 
 import static com.wora.waitingRoom.common.util.OptionalWrapper.orElseThrow;
 
@@ -28,9 +28,9 @@ public class DefaultWaitingListService implements WaitingListService {
     private final WaitingListConfigurationProperties configurationProperties;
 
     @Override
-    public List<WaitingListResponseDto> findAll() {
-        return repository.findAll()
-                .stream().map(mapper::toResponseDto).toList();
+    public Page<WaitingListResponseDto> findAll(int pageNum, int pageSize) {
+        return repository.findAll(PageRequest.of(pageNum, pageSize))
+                .map(mapper::toResponseDto);
     }
 
     @Override
@@ -42,7 +42,6 @@ public class DefaultWaitingListService implements WaitingListService {
 
     @Override
     public WaitingListResponseDto create(WaitingListRequestDto dto) {
-        System.out.println(configurationProperties);
         WaitingList waitingList = WaitingList.builder()
                 .date(dto.date())
                 .capacity(dto.capacity(), configurationProperties.capacity())
