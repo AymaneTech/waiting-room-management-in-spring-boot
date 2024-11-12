@@ -1,6 +1,7 @@
 package com.wora.waitingRoom.waitingList.domain.entity;
 
 import com.wora.waitingRoom.visitor.domain.Visitor;
+import com.wora.waitingRoom.waitingList.domain.exception.VisitAlreadyCanceledException;
 import com.wora.waitingRoom.waitingList.domain.exception.VisitAlreadyCompletedException;
 import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
 import com.wora.waitingRoom.waitingList.domain.valueObject.VisitId;
@@ -59,9 +60,8 @@ public class Visit {
     }
 
     public Visit cancelVisit() {
-        ensureVisitIsToday();
         if (status == Status.CANCELED || status != Status.WAITING) {
-            throw new VisitAlreadyCompletedException("Visit has already been canceled.");
+            throw new VisitAlreadyCompletedException("Visit has already been " + status.name().toLowerCase());
         }
         this.status = Status.CANCELED;
         return this;
@@ -69,9 +69,12 @@ public class Visit {
 
     public Visit beginVisit() {
         ensureVisitIsToday();
-        if (isInProgress()) {
+        if (status == Status.CANCELED)
+            throw new VisitAlreadyCanceledException("Visit has already been canceled.");
+
+        if (isInProgress())
             throw new VisitAlreadyCompletedException("Visit has already been started.");
-        }
+
         this.status = Status.IN_PROGRESS;
         this.startTime = LocalTime.now();
         return this;

@@ -4,9 +4,7 @@ import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
 import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
@@ -40,6 +38,7 @@ public class WaitingList {
     private List<Visit> visits = new ArrayList<>();
 
     public WaitingList(Builder builder) {
+        this.id = builder.id;
         this.date = builder.date;
         this.capacity = builder.capacity;
         this.mode = builder.mode;
@@ -51,11 +50,17 @@ public class WaitingList {
     }
 
     public static class Builder {
+        private WaitingListId id;
         private LocalDate date;
         private Integer capacity;
         private Mode mode;
         private Algorithm algorithm;
         private List<Visit> visits;
+
+        public Builder id(WaitingListId id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder date(LocalDate date) {
             this.date = date;
@@ -67,13 +72,28 @@ public class WaitingList {
             return this;
         }
 
+        public Builder capacity(Integer capacity) {
+            this.capacity = capacity;
+            return this;
+        }
+
         public Builder mode(Mode value, Mode defaultValue) {
             mode = value != null ? value : defaultValue;
             return this;
         }
 
+        public Builder mode(Mode mode) {
+            this.mode = mode;
+            return this;
+        }
+
         public Builder algorithm(Algorithm value, Algorithm defaultValue) {
             algorithm = value != null ? value : defaultValue;
+            return this;
+        }
+
+        public Builder algorithm(Algorithm algorithm) {
+            this.algorithm = algorithm;
             return this;
         }
 
