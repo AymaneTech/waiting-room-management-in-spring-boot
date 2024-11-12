@@ -1,16 +1,3 @@
 spring:
-  application:
-    name: It Survey
-  datasource:
-    url: jdbc:postgresql://localhost:5432/it_survey
-    username: postgres
-    password: admin
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
   profiles:
-    active: dockerized
+    active: prod

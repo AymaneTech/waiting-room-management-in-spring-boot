@@ -36,7 +36,7 @@ public class WaitingList {
     @Enumerated(EnumType.STRING)
     private Algorithm algorithm;
 
-    @OneToMany
+    @OneToMany(mappedBy = "waitingList")
     private List<Visit> visits = new ArrayList<>();
 
     public WaitingList(Builder builder) {

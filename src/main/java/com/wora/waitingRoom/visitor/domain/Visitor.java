@@ -35,7 +35,7 @@ public class Visitor {
     @Embedded
     private Name name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "visitor")
     private List<Visit> visits = new ArrayList<>();
 
     public Visitor(String firstName, String lastName) {
