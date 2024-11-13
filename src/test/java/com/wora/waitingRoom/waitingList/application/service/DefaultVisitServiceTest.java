@@ -182,7 +182,7 @@ class DefaultVisitServiceTest {
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
             assertThat(actual.status()).isEqualTo(Status.CANCELED);
             assertThat(actual.startTime()).isNull();
-            assertThat(actual.endDate()).isNull();
+            assertThat(actual.endTime()).isNull();
         }
     }
 
@@ -236,7 +236,7 @@ class DefaultVisitServiceTest {
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
             assertThat(actual.status()).isEqualTo(Status.IN_PROGRESS);
             assertThat(actual.startTime()).isNotNull();
-            assertThat(actual.endDate()).isNull();
+            assertThat(actual.endTime()).isNull();
         }
     }
 
@@ -291,7 +291,7 @@ class DefaultVisitServiceTest {
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
             assertThat(actual.status()).isEqualTo(Status.FINISHED);
             assertThat(actual.startTime()).isNotNull();
-            assertThat(actual.endDate()).isNotNull();
+            assertThat(actual.endTime()).isNotNull();
         }
     }
 }
