@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.context.annotation.Profile;
 
 @ConfigurationProperties("app.open-api")
-@Profile("dockerized")
+@Profile("prod")
 public record OpenApiConfigurationProperties(
         Info info,
         Server server
