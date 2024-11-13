@@ -50,7 +50,7 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: password
       - name: Wait for database to be ready (like waiting for women to do makeup)
         run: |
-          timeout 30s bash -c 'until pg_isready -h localhost -p 5432; do sleep 1; done'
+          timeout 30s bash -c 'until pg_isready -h localhost -p 5433; do sleep 1; done'
           continue-on-error: true
 
       - name: Run integration test (mvn verify)
