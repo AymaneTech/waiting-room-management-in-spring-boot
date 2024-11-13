@@ -2,8 +2,8 @@ spring:
   application:
     name: It Survey
   datasource:
-    url: jdbc:postgresql://localhost:5433/it-survey
-    username: user
+    url: jdbc:postgresql://localhost:5433/prod_db
+    username: pguser
     password: password
     driver-class-name: org.postgresql.Driver
   jpa:
