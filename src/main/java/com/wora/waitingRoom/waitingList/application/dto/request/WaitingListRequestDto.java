@@ -7,9 +7,10 @@ import jakarta.validation.constraints.NotNull;
 
 import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
 import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
+import jakarta.validation.constraints.Positive;
 
 public record WaitingListRequestDto(@NotNull @FutureOrPresent LocalDate date,
-                                    Integer capacity,
+                                    @Positive Integer capacity,
                                     Mode mode,
                                     Algorithm algorithm) {
 }

@@ -4,8 +4,10 @@ import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListReque
 import com.wora.waitingRoom.waitingList.application.dto.response.WaitingListResponseDto;
 import com.wora.waitingRoom.waitingList.application.service.WaitingListService;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +33,13 @@ public class WaitListController {
     }
 
     @PostMapping
-    public ResponseEntity<WaitingListResponseDto> create(@RequestBody WaitingListRequestDto request) {
+    public ResponseEntity<WaitingListResponseDto> create(@RequestBody @Valid WaitingListRequestDto request) {
         WaitingListResponseDto waitingList = service.create(request);
-        return ResponseEntity.ok(waitingList);
+        return new ResponseEntity<>(waitingList, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<WaitingListResponseDto> update(@PathVariable Long id, @RequestBody WaitingListRequestDto request) {
+    public ResponseEntity<WaitingListResponseDto> update(@PathVariable Long id, @RequestBody @Valid WaitingListRequestDto request) {
         WaitingListResponseDto waitingList = service.update(new WaitingListId(id), request);
         return ResponseEntity.ok(waitingList);
     }

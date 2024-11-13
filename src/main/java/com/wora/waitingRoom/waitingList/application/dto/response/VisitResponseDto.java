@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 public record VisitResponseDto(@NotNull LocalTime arrivalTime,
                                LocalTime startTime,
-                               LocalTime endDate,
+                               LocalTime endTime,
                                @NotNull Status status,
                                Byte priority,
                                Duration estimatedProcessingTime,
