@@ -48,10 +48,6 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/prod_db
           SPRING_DATASOURCE_USERNAME: pguser
           SPRING_DATASOURCE_PASSWORD: password
-      - name: Wait for database to be ready (like waiting for women to do makeup)
-        run: |
-          timeout 30s bash -c 'until pg_isready -h localhost -p 5433; do sleep 1; done'
-          continue-on-error: true
 
       - name: Run integration test (mvn verify)
         run: mvn verify
@@ -59,6 +55,10 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/test_db
           SPRING_DATASOURCE_USERNAME: pguser
           SPRING_DATASOURCE_PASSWORD: password
+      - name: Wait for database to be ready (like waiting for women to do makeup)
+        run: |
+          timeout 30s bash -c 'until pg_isready -h localhost -p 5433; do sleep 1; done'
+          continue-on-error: true
 
       - name: Shut down docker
         run: docker compose down
