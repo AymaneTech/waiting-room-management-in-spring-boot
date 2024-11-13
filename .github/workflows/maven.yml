@@ -45,8 +45,8 @@ jobs:
       - name: Run docker compose
         run: docker compose up --build -d
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/it-survey
-          SPRING_DATASOURCE_USERNAME: user
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/prod_db
+          SPRING_DATASOURCE_USERNAME: pguser
           SPRING_DATASOURCE_PASSWORD: password
       - name: Wait for database to be ready (like waiting for women to do makeup)
         run: |
@@ -56,8 +56,8 @@ jobs:
       - name: Run integration test (mvn verify)
         run: mvn verify
         env:
-          SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
-          SPRING_DATASOURCE_USERNAME: sa
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/test_db
+          SPRING_DATASOURCE_USERNAME: pguser
           SPRING_DATASOURCE_PASSWORD: password
 
       - name: Shut down docker
