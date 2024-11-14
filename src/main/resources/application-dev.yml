@@ -1,8 +1,8 @@
 spring:
   application:
-    name: It Survey
+    name: Waiting room
   datasource:
-    url: jdbc:postgresql://localhost:5432/it_survey
+    url: jdbc:postgresql://localhost:5432/wrm
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver

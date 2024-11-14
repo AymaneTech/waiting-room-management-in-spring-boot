@@ -1,6 +1,6 @@
 spring:
   application:
-    name: It Survey
+    name: Wrm
   datasource:
     url: jdbc:postgresql://localhost:5433/test_db
     username: pguser

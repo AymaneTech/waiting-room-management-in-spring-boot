@@ -1,8 +1,8 @@
 spring:
   application:
-    name: It Survey
+    name: wrm
   datasource:
-    url: jdbc:postgresql://localhost:5432/it_survey
+    url: jdbc:postgresql://localhost:5432/wrm_db
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -13,4 +13,4 @@ spring:
     show-sql: true
 
   profiles:
-    active: dockerized
+    active: prod
