@@ -4,9 +4,10 @@ import com.wora.waitingRoom.waitingList.domain.entity.Visit;
 import com.wora.waitingRoom.waitingList.domain.exception.MultipleWaitingListsFoundException;
 import com.wora.waitingRoom.waitingList.domain.service.Scheduler;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
 
-public class HpfScheduler implements Scheduler {
+public class HpfScheduler extends AbstractScheduler implements Scheduler {
     @Override
     public List<Visit> schedule(List<Visit> visits) {
         if (visits.isEmpty())
