@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.wora</groupId>
     <artifactId>waitingRoom</artifactId>
@@ -118,8 +118,8 @@
                 <version>0.8.11</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/wora/waitingRoom/survey/application/mapper/**
-                        </exclude> <!-- Exclude MapStruct package -->
+                        <exclude>com/wora/waitingRoom/waitingList/application/mapper/**
+                        </exclude>
                     </excludes>
                 </configuration>
                 <executions>
