@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.time.Duration;
@@ -22,6 +23,7 @@ import java.time.LocalTime;
 @Setter
 @Accessors(chain = true)
 @NoArgsConstructor
+@ToString
 public class Visit {
 
     @EmbeddedId
@@ -53,7 +55,7 @@ public class Visit {
         this.id = new VisitId(visitor.getId(), waitingList.getId());
         this.visitor = visitor;
         this.waitingList = waitingList;
-        this.priority = priority;
+        this.priority = priority != null ? priority : (byte) 255;
         this.estimatedProcessingTime = estimatedProcessingTime;
         this.status = Status.WAITING;
         this.arrivalTime = LocalTime.now();
