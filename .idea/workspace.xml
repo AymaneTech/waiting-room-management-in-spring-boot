@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23961c63-4f18-41e8-9015-c11f5d650336" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/init-multiple-databases.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/mapper/BaseMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/mapper/IdValueObjectMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/service/CrudService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/validation/ReferenceExists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/validation/UniqueField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/validation/validator/DateValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/validation/validator/ReferenceExistsValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/application/validation/validator/UniqueFieldValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/domain/ErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/domain/exception/EntityCreationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/domain/exception/EntityNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/domain/valueObject/Timestamp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/infrastructure/web/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/common/util/OptionalWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/config/OpenApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/config/ScheduleConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/config/configurationProperties/OpenApiConfigurationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/config/configurationProperties/WaitingListConfigurationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/application/service/VisitorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/application/service/impl/DefaultVisitorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/domain/Name.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/domain/Visitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/domain/VisitorId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/domain/VisitorRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/visitor/infrastructure/VisitorSeeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/embeddable/VisitorEmbeddableDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/embeddable/WaitingListEmbeddableDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/request/VisitRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/request/WaitingListRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/response/AnalyticsResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/response/VisitResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/dto/response/WaitingListResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/mapper/VisitMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/mapper/WaitingListMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/AnalyticsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/VisitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/VisitsSchedulingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/WaitingListService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/impl/DefaultAnalyticsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/impl/DefaultVisitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/impl/DefaultVisitsSchedulingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/application/service/impl/DefaultWaitingListService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/entity/Visit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/entity/WaitingList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/DuplicateSubscriptionException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/MultipleWaitingListsFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/VisitAlreadyCanceledException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/VisitAlreadyCompletedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/VisitDateMismatchException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/exception/WaitingListDatePassedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/repository/VisitRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/repository/WaitingListRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/Scheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/SchedulerFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/impl/AbstractScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/impl/FifoScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/impl/HpfScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/service/impl/SpfScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/vo/Algorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/vo/Mode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/vo/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/vo/VisitId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/domain/vo/WaitingListId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/infrastructure/web/AnalyticsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/infrastructure/web/SchedulingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/infrastructure/web/VisitController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wora/waitingroom/waitinglist/infrastructure/web/WaitListController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-example.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/visitor/application/service/DefaultVisitorServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/visitor/infrastructure/VisitorSeederTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/application/service/DefaultVisitServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/application/service/DefaultVisitsSchedulingServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/application/service/DefaultWaitingListServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/domain/service/FifoSchedulerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/domain/service/HpfSchedulerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/domain/service/SpfSchedulerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/infrastructure/web/AnalyticsControllerIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/infrastructure/web/SchedulingControllerIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/infrastructure/web/VisitControllerIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/wora/waitingRoom/waitinglist/infrastructure/web/WaitListControllerIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application-test.yml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2ohsbmL9YZZTPtVQxlkgGpUNsBX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AnalyticsControllerIntegrationTest.executor": "Run",
+    "JUnit.AnalyticsControllerIntegrationTest.givenWaitingList_whenGetAnalytics_shouldReturnAnalyticsData.executor": "Run",
+    "JUnit.Application.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$BeginVisitTests.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$BeginVisitTests.givenVisitDoesNotExists_whenBeginVisit_thenThrowEntityNotFoundException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$BeginVisitTests.givenVisitIsAlreadyInProgress_whenBeginVisit_thenThrowVisitAlreadyCompletedException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CancelSubscriptionTests.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CancelSubscriptionTests.givenVisitDoesNotExists_whenCancelSubscription_thenThrowEntityNotFoundException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CancelSubscriptionTests.givenVisitIsAlreadyCanceled_whenCancelSubscription_thenThrowVisitAlreadyCompletedException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CancelSubscriptionTests.givenVisitIsAlreadyInProgress_whenCancelSubscription_thenThrowVisitAlreadyCompletedException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CancelSubscriptionTests.givenVisit_whenCancelSubscription_thenReturnVisitResponseDto.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CompleteVisitTests.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$CompleteVisitTests.givenVisitIsNotToday_whenCompleteVisit_thenThrowIllegalArgumentException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$SubscribeVisitorTests.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$SubscribeVisitorTests.givenVisitRequestCorrect_whenSubscribeVisitor_thenReturnVisitResponseDto.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$SubscribeVisitorTests.givenWaitingListDatePassed_whenSubscribeVisitor_thenThrowWaitingListDatePassedException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest$SubscribeVisitorTests.givenWaitingListIdDoesNotExists_whenSubscribeVisitor_thenThrowEntityNotFoundException.executor": "Run",
+    "JUnit.DefaultVisitServiceTest.executor": "Run",
+    "JUnit.DefaultVisitorServiceTest.executor": "Run",
+    "JUnit.DefaultVisitorServiceTest.givenVisitorExists_whenFindEntityById_thenShouldReturnVisitor.executor": "Run",
+    "JUnit.DefaultVisitsSchedulingServiceTest,givenVisits_whenScheduleVisits_thenReturnVisitsScheduled and 1 more.executor": "Run",
+    "JUnit.DefaultVisitsSchedulingServiceTest.executor": "Run",
+    "JUnit.DefaultVisitsSchedulingServiceTest.givenEmptyVisitsList_whenScheduleVisits_thenReturnEmptyList.executor": "Run",
+    "JUnit.DefaultVisitsSchedulingServiceTest.givenVisits_whenScheduleVisits_thenReturnVisitsScheduled.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$CreateTests.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$CreateTests.givenWaitingListRequestDto_whenCreate_thenReturnWaitingListResponseDto.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$CreateTests.givenWaitingListRequestDto_whenCreate_thenReturnWaitingListResponseDto_.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$FindAllTests.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$FindAllTests.givenWaitingLists_whenFindALl_thenReturnPageOfWaitingListResponseDto.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$FindById.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$UpdateTests.givenWaitingListDoesNotExists_whenUpdate_thenThrowEntityNotFoundException.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest$UpdateTests.givenWaitingListExists_whenUpdate_thenReturnWaitingListResponseDto.executor": "Run",
+    "JUnit.DefaultWaitingListServiceTest.executor": "Run",
+    "JUnit.FifoSchedulerTest.executor": "Run",
+    "JUnit.FifoSchedulerTest.givenValidVisitsLists_whenSchedule_thenReturnOrderedVisitsByArrivalTime.executor": "Run",
+    "JUnit.FifoSchedulerTest.givenVisitsDontBelongToSameWaitingList_whenSchedule_thenThrowMultipleWaitingListsFoundException.executor": "Run",
+    "JUnit.FifoSchedulerTest.givenVisitsDontBelongToSameWaitingList_whenSchedule_thenThrowVisitsNotBelongToSameWaitingList.executor": "Run",
+    "JUnit.HpfSchedulerTest.executor": "Run",
+    "JUnit.HpfSchedulerTest.givenEmptyList_whenSchedule_thenReturnEmptyList.executor": "Run",
+    "JUnit.HpfSchedulerTest.givenValidVisitsLists_whenSchedule_thenReturnOrderedVisitsByArrivalTime.executor": "Run",
+    "JUnit.HpfSchedulerTest.givenVisitsDontBelongToSameWaitingList_whenSchedule_thenThrowMultipleWaitingListsFoundException.executor": "Run",
+    "JUnit.HpfSchedulerTest.givenVisitsWithSamePriority_whenSchedule_thenReturnVisitOrderedByArrivalTime.executor": "Run",
+    "JUnit.SchedulingControllerIntegrationTest.executor": "Run",
+    "JUnit.SchedulingControllerIntegrationTest.givenValidWaitingListIdAndStatus_whenFindVisitsByStatus_thenReturnFilteredVisits.executor": "Run",
+    "JUnit.SchedulingControllerIntegrationTest.givenValidWaitingListId_whenScheduleVisits_thenReturnScheduledVisitsOrderedByPriority.executor": "Run",
+    "JUnit.SpfSchedulerTest.givenValidVisitsLists_whenSchedule_thenReturnOrderedVisitsByArrivalTime.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$BeginVisitTests.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CancelSubscriptionTests.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CancelSubscriptionTests.givenVisitDoesNotExist_whenCancelSubscription_thenReturnsNotFound.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CancelSubscriptionTests.givenVisitExists_whenCancelSubscription_thenReturnsVisit.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CancelSubscriptionTests.givenVisitorDoesntSubscribe_whenCancelSubscription_thenReturnsBadRequest.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CompleteVisitTests.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CompleteVisitTests.givenVisitExists_whenCompleteVisit_thenReturnsVisit.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$CompleteVisitTests.givenVisitorDoesntBeginVisit_whenCompleteVisit_thenReturnsBadRequest.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$SubscribeVisitorTests.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest$SubscribeVisitorTests.givenWaitingListAndVisitorExists_whenSubscribeVisitor_thenReturnsVisit.executor": "Run",
+    "JUnit.VisitControllerIntegrationTest.executor": "Run",
+    "JUnit.VisitorSeederTest.givenVisitorsDoesNotExists_whenCommandLineRunnerRuns_shouldSaveVisitors.executor": "Run",
+    "JUnit.VisitorSeederTest.givenVisitorsExists_whenCommandLineRunnerRuns_shouldNotSaveVisitors.executor": "Run",
+    "JUnit.WaitListControllerIT$CreateTests.givenInvalidRequest_whenCreate_thenReturnsValidationError.executor": "Run",
+    "JUnit.WaitListControllerIT$CreateTests.givenValidRequestWithDefaultValues_whenCreate_thenReturnsCreateWaitingList.executor": "Run",
+    "JUnit.WaitListControllerIT$CreateTests.givenValidRequest_whenCreate_thenReturnsCreateWaitingList.executor": "Run",
+    "JUnit.WaitListControllerIT$DeleteTests.executor": "Run",
+    "JUnit.WaitListControllerIT$FindById.givenWaitingListDoesNotExists_whenFindById_thenReturnsNotFound.executor": "Run",
+    "JUnit.WaitListControllerIT$FindById.givenWaitingListsExists_whenFindById_thenReturnsWaitingList.executor": "Run",
+    "JUnit.WaitListControllerIT$FindByIdTests,givenWaitingListDoesNotExists_whenFindById_thenReturnsNotFound and 6 more.executor": "Run",
+    "JUnit.WaitListControllerIT$UpdateTests.givenInvalidRequest_whenUpdate_thenReturnsValidationError.executor": "Run",
+    "JUnit.WaitListControllerIT$UpdateTests.givenNotExistentId_whenUpdate_thenReturnsEntityNotFound.executor": "Run",
+    "JUnit.WaitListControllerIT$UpdateTests.givenValidRequest_whenUpdate_thenReturnsUpdatedWaitingList.executor": "Run",
+    "JUnit.WaitListControllerIT,givenWaitingListsExists_whenFindAll_thenReturnsAllWaitingLists and 3 more.executor": "Run",
+    "JUnit.WaitListControllerIT.executor": "Run",
+    "JUnit.WaitListControllerIT.givenWaitingListsExists_whenFindAll_thenReturnsAllWaitingLists.executor": "Run",
+    "JUnit.WaitListControllerIntegrationTest.executor": "Debug",
+    "Maven.waiting-room [clean,verify].executor": "Run",
+    "Maven.waitingRoom [clean*].executor": "Run",
+    "Maven.waitingRoom [clean,package].executor": "Run",
+    "Maven.waitingRoom [clean,verify].executor": "Run",
+    "Maven.waitingRoom [clean].executor": "Run",
+    "Maven.waitingRoom [package].executor": "Run",
+    "Maven.waitingRoom [verify].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
+    "Notification.DoNotAsk-Database detector": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Application (1).executor": "Debug",
+    "Spring Boot.Application.executor": "Run",
+    "Spring Boot.WaitingRoomApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "extract.method.default.visibility": "private",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/mnt/eb2f1159-9c91-4b6c-be64-cf3b468945ff/codes/briefs/a2/sprint-3/waitingRoom/waiting-room-management-module",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.wora.waitingRoom.waitingList.application.service.impl" />
+      <recent name="com.wora.waitingRoom.waitingList.domain.exception" />
+      <recent name="com.wora.waitingRoom.waitingList.application.dto.embeddable" />
+      <recent name="com.wora.waitingRoom.visitor.application.service.impl" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/wora/waitingRoom/config" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/wora/waitingRoom" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.wora.waitingroom.waitinglist.infrastructure.web" />
+      <recent name="com.wora.waitingRoom.waitingList.infrastructure.web" />
+      <recent name="com.wora.waitingRoom.waitingList.application.service" />
+      <recent name="com.wora.waitingRoom.waitingList.domain.service" />
+      <recent name="com.wora.waitingRoom.visitor.infrastructure" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wora.waitingroom.waitinglist.application.service" />
+      <recent name="com.wora.waitingRoom.waitingList.domain.exception" />
+      <recent name="com.wora.waitingRoom.waitingList.domain.service.impl" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+      <command value="mvn clean package" />
+      <command value="mvn clean " />
+      <command value="mvn verify" />
+      <command value="mvn clean*" />
+      <command value="mvn clean" />
+      <command value="mvn clean verify" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application (1)">
+    <configuration name="AnalyticsControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wora.waitingRoom.waitinglist.infrastructure.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web" />
+      <option name="MAIN_CLASS_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web.AnalyticsControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnalyticsControllerIntegrationTest.givenWaitingList_whenGetAnalytics_shouldReturnAnalyticsData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wora.waitingRoom.waitinglist.infrastructure.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web" />
+      <option name="MAIN_CLASS_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web.AnalyticsControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="givenWaitingList_whenGetAnalytics_shouldReturnAnalyticsData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SchedulingControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wora.waitingRoom.waitinglist.infrastructure.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wora.waitingRoom.waitingList.infrastructure.web" />
+      <option name="MAIN_CLASS_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web.SchedulingControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VisitControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wora.waitingRoom.waitinglist.infrastructure.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wora.waitingRoom.waitingList.infrastructure.web" />
+      <option name="MAIN_CLASS_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web.VisitControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitListControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wora.waitingRoom.waitinglist.infrastructure.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wora.waitingRoom.waitingList.infrastructure.web" />
+      <option name="MAIN_CLASS_NAME" value="com.wora.waitingRoom.waitinglist.infrastructure.web.WaitListControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="waitingRoom" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.wora.waitingroom.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="waitingRoom" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.wora.waitingRoom.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AnalyticsControllerIntegrationTest.givenWaitingList_whenGetAnalytics_shouldReturnAnalyticsData" />
+        <item itemvalue="JUnit.AnalyticsControllerIntegrationTest" />
+        <item itemvalue="JUnit.SchedulingControllerIntegrationTest" />
+        <item itemvalue="JUnit.VisitControllerIntegrationTest" />
+        <item itemvalue="JUnit.WaitListControllerIntegrationTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23961c63-4f18-41e8-9015-c11f5d650336" name="Changes" comment="" />
+      <created>1731333216095</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731333216095</updated>
+      <workItem from="1731333217171" duration="682000" />
+      <workItem from="1731333991897" duration="1889000" />
+      <workItem from="1731335901830" duration="1383000" />
+      <workItem from="1731337347818" duration="1456000" />
+      <workItem from="1731339978798" duration="795000" />
+      <workItem from="1731341105901" duration="6000" />
+      <workItem from="1731351657286" duration="60000" />
+      <workItem from="1731359706855" duration="675000" />
+      <workItem from="1731360807548" duration="957000" />
+      <workItem from="1731361769248" duration="376000" />
+      <workItem from="1731368371855" duration="1505000" />
+      <workItem from="1731369895669" duration="2744000" />
+      <workItem from="1731373960358" duration="654000" />
+      <workItem from="1731398618753" duration="808000" />
+      <workItem from="1731399611686" duration="733000" />
+      <workItem from="1731400365899" duration="31000" />
+      <workItem from="1731400417711" duration="21788000" />
+      <workItem from="1731436849978" duration="9501000" />
+      <workItem from="1731453421680" duration="14149000" />
+      <workItem from="1731486130458" duration="3956000" />
+      <workItem from="1731490724840" duration="151000" />
+      <workItem from="1731491052289" duration="857000" />
+      <workItem from="1731492180462" duration="599000" />
+      <workItem from="1731520188289" duration="129000" />
+      <workItem from="1731520734237" duration="307000" />
+      <workItem from="1731523384156" duration="87000" />
+      <workItem from="1731524085425" duration="12000" />
+      <workItem from="1731524426701" duration="740000" />
+      <workItem from="1731572970912" duration="14318000" />
+      <workItem from="1731622581756" duration="2895000" />
+      <workItem from="1731657481977" duration="14074000" />
+      <workItem from="1731675094539" duration="63000" />
+      <workItem from="1731675167332" duration="2336000" />
+      <workItem from="1731677515160" duration="13000" />
+      <workItem from="1731677539708" duration="256000" />
+      <workItem from="1731677811171" duration="3918000" />
+      <workItem from="1731682419219" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
