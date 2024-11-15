@@ -1,4 +1,4 @@
-package com.wora.waitingRoom.waitingList.domain.service;
+package com.wora.waitingRoom.waitinglist.domain.service;
 
 import com.wora.waitingroom.visitor.domain.Visitor;
 import com.wora.waitingroom.waitinglist.domain.entity.Visit;

@@ -1,4 +1,4 @@
-package com.wora.waitingRoom.waitingList.application.service;
+package com.wora.waitingRoom.waitinglist.application.service;
 
 import com.wora.waitingroom.common.domain.exception.EntityNotFoundException;
 import com.wora.waitingroom.visitor.domain.Visitor;

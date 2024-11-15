@@ -1,4 +1,4 @@
-package com.wora.waitingRoom.waitingList.infrastructure.web;
+package com.wora.waitingRoom.waitinglist.infrastructure.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wora.waitingroom.Application;

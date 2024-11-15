@@ -13,4 +13,6 @@ public interface VisitRepository extends JpaRepository<Visit, VisitId> {
 
     @Query("SELECT e FROM Visit e WHERE e.waitingList.id = :id AND e.status = :status")
     List<Visit> findAllByWaitingListIdAndStatus(WaitingListId id, Status status);
+
+    List<Visit> findAllByWaitingListId(WaitingListId id);
 }
