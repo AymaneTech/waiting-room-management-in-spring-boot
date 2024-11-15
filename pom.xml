@@ -9,9 +9,9 @@
         <relativePath/>
     </parent>
     <groupId>com.wora</groupId>
-    <artifactId>waitingRoom</artifactId>
+    <artifactId>waiting-room</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>waitingRoom</name>
+    <name>waiting-room</name>
     <description>Waiting room management</description>
     <url/>
     <licenses>
