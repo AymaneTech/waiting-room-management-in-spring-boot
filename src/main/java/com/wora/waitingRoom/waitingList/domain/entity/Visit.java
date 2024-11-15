@@ -96,6 +96,10 @@ public class Visit {
         return this.status == Status.IN_PROGRESS;
     }
 
+    public boolean isNotWaiting() {
+        return status != Status.WAITING;
+    }
+
     private void ensureVisitIsToday() {
         if (!waitingList.getDate().isEqual(LocalDate.now()))
             throw new IllegalArgumentException("You can't start or complete or cancel a visit that is not today");

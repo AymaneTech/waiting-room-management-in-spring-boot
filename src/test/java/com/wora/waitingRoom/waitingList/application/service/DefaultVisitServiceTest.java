@@ -41,13 +41,13 @@ class DefaultVisitServiceTest {
     @Mock
     private VisitMapper mapper;
 
-    private VisitService sut;
+    private VisitService underTest;
     private WaitingList waitingList;
     private Visitor visitor;
 
     @BeforeEach
     void setup() {
-        sut = new DefaultVisitService(visitRepository, waitingListService, visitorService, mapper);
+        underTest = new DefaultVisitService(visitRepository, waitingListService, visitorService, mapper);
         waitingList = WaitingList.builder()
                 .id(new WaitingListId(3L))
                 .date(LocalDate.now())
@@ -56,7 +56,6 @@ class DefaultVisitServiceTest {
                 .algorithm(Algorithm.HPF)
                 .build();
         visitor = new Visitor(2L, "aymane", "the goat");
-
     }
 
     @Nested
@@ -68,7 +67,7 @@ class DefaultVisitServiceTest {
             given(waitingListService.findEntityById(waitingList.getId())).willThrow(new EntityNotFoundException("waiting list with id 3 not found"));
 
             assertThatExceptionOfType(EntityNotFoundException.class)
-                    .isThrownBy(() -> sut.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
+                    .isThrownBy(() -> underTest.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
                     .withMessageContaining("waiting list with id 3 not found");
         }
 
@@ -80,7 +79,7 @@ class DefaultVisitServiceTest {
             given(visitorService.findEntityById(visitor.getId())).willThrow(new EntityNotFoundException("visitor with id 2 not found"));
 
             assertThatExceptionOfType(EntityNotFoundException.class)
-                    .isThrownBy(() -> sut.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
+                    .isThrownBy(() -> underTest.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
                     .withMessageContaining("visitor with id 2 not found");
         }
 
@@ -93,7 +92,7 @@ class DefaultVisitServiceTest {
             given(waitingListService.findEntityById(waitingList.getId())).willReturn(waitingList);
 
             assertThatExceptionOfType(WaitingListDatePassedException.class)
-                    .isThrownBy(() -> sut.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
+                    .isThrownBy(() -> underTest.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
                     .withMessageContaining("You can't subscribe to a waiting list that has already passed");
         }
 
@@ -106,7 +105,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.existsById(any(VisitId.class))).willReturn(true);
 
             assertThatExceptionOfType(DuplicateSubscriptionException.class)
-                    .isThrownBy(() -> sut.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
+                    .isThrownBy(() -> underTest.subscribeVisitor(waitingList.getId(), visitor.getId(), request))
                     .withMessageContaining("You have already subscribed to this waiting list");
         }
 
@@ -124,7 +123,7 @@ class DefaultVisitServiceTest {
                 return new VisitResponseDto(v.getArrivalTime(), v.getStartTime(), v.getEndDate(), v.getStatus(), v.getPriority(), v.getEstimatedProcessingTime(), null, null);
             });
 
-            VisitResponseDto actual = sut.subscribeVisitor(waitingList.getId(), visitor.getId(), request);
+            VisitResponseDto actual = underTest.subscribeVisitor(waitingList.getId(), visitor.getId(), request);
 
             assertThat(actual).isNotNull();
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
@@ -138,7 +137,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.empty());
 
             assertThatExceptionOfType(EntityNotFoundException.class)
-                    .isThrownBy(() -> sut.cancelSubscription(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.cancelSubscription(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("there is no visit for waiting list id: 3 and visitor id: 2");
         }
 
@@ -150,7 +149,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(VisitAlreadyCompletedException.class)
-                    .isThrownBy(() -> sut.cancelSubscription(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.cancelSubscription(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("Visit has already been canceled");
         }
 
@@ -162,7 +161,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(VisitAlreadyCompletedException.class)
-                    .isThrownBy(() -> sut.cancelSubscription(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.cancelSubscription(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("Visit has already been in_progress");
         }
 
@@ -176,7 +175,7 @@ class DefaultVisitServiceTest {
                 return new VisitResponseDto(v.getArrivalTime(), v.getStartTime(), v.getEndDate(), v.getStatus(), v.getPriority(), v.getEstimatedProcessingTime(), null, null);
             });
 
-            VisitResponseDto actual = sut.cancelSubscription(waitingList.getId(), visitor.getId());
+            VisitResponseDto actual = underTest.cancelSubscription(waitingList.getId(), visitor.getId());
 
             assertThat(actual).isNotNull();
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
@@ -193,7 +192,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.empty());
 
             assertThatExceptionOfType(EntityNotFoundException.class)
-                    .isThrownBy(() -> sut.beginVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.beginVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("there is no visit for waiting list id: 3 and visitor id: 2");
         }
 
@@ -205,7 +204,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(VisitAlreadyCanceledException.class)
-                    .isThrownBy(() -> sut.beginVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.beginVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("Visit has already been canceled.");
         }
 
@@ -217,7 +216,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(VisitAlreadyCompletedException.class)
-                    .isThrownBy(() -> sut.beginVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.beginVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("Visit has already been started.");
         }
 
@@ -231,7 +230,7 @@ class DefaultVisitServiceTest {
                 return new VisitResponseDto(v.getArrivalTime(), v.getStartTime(), v.getEndDate(), v.getStatus(), v.getPriority(), v.getEstimatedProcessingTime(), null, null);
             });
 
-            VisitResponseDto actual = sut.beginVisit(waitingList.getId(), visitor.getId());
+            VisitResponseDto actual = underTest.beginVisit(waitingList.getId(), visitor.getId());
             assertThat(actual).isNotNull();
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
             assertThat(actual.status()).isEqualTo(Status.IN_PROGRESS);
@@ -247,7 +246,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.empty());
 
             assertThatExceptionOfType(EntityNotFoundException.class)
-                    .isThrownBy(() -> sut.completeVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.completeVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("there is no visit for waiting list id: 3 and visitor id: 2");
         }
 
@@ -259,7 +258,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> sut.completeVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.completeVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("You can't start or complete or cancel a visit that is not today");
         }
 
@@ -271,7 +270,7 @@ class DefaultVisitServiceTest {
             given(visitRepository.findById(any(VisitId.class))).willReturn(Optional.of(visit));
 
             assertThatExceptionOfType(VisitAlreadyCompletedException.class)
-                    .isThrownBy(() -> sut.completeVisit(waitingList.getId(), visitor.getId()))
+                    .isThrownBy(() -> underTest.completeVisit(waitingList.getId(), visitor.getId()))
                     .withMessageContaining("Visit has already been completed.");
         }
 
@@ -286,7 +285,7 @@ class DefaultVisitServiceTest {
                 return new VisitResponseDto(v.getArrivalTime(), v.getStartTime(), v.getEndDate(), v.getStatus(), v.getPriority(), v.getEstimatedProcessingTime(), null, null);
             });
 
-            VisitResponseDto actual = sut.completeVisit(waitingList.getId(), visitor.getId());
+            VisitResponseDto actual = underTest.completeVisit(waitingList.getId(), visitor.getId());
             assertThat(actual).isNotNull();
             assertThat(actual.arrivalTime()).isEqualTo(visit.getArrivalTime());
             assertThat(actual.status()).isEqualTo(Status.FINISHED);

@@ -3,7 +3,6 @@ package com.wora.waitingRoom.waitingList.domain.service;
 import com.wora.waitingRoom.visitor.domain.Visitor;
 import com.wora.waitingRoom.waitingList.domain.entity.Visit;
 import com.wora.waitingRoom.waitingList.domain.entity.WaitingList;
-import com.wora.waitingRoom.waitingList.domain.service.impl.HpfScheduler;
 import com.wora.waitingRoom.waitingList.domain.service.impl.SpfScheduler;
 import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
 import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
@@ -41,12 +40,13 @@ class SpfSchedulerTest {
                 new Visitor("hamza", "lamin"),
                 new Visitor("soufiane", "bouanani"));
     }
+
     @Test
     void givenValidVisitsLists_whenSchedule_thenReturnOrderedVisitsByArrivalTime() {
         visits = List.of(
                 new Visit(visitors.get(0), waitingList, null, Duration.ofHours(2)),
                 new Visit(visitors.get(1), waitingList, null, Duration.ofHours(1)),
-                new Visit(visitors.get(3), waitingList, null,Duration.ofMinutes(30)),
+                new Visit(visitors.get(3), waitingList, null, Duration.ofMinutes(30)),
                 new Visit(visitors.get(2), waitingList, null, Duration.ofHours(3))
         );
         List<Visit> actual = underTest.schedule(visits);
