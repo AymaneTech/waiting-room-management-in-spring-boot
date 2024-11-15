@@ -1,12 +1,17 @@
-FROM openjdk:21-jdk-slim
-LABEL authors="Aymane El Maini"
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS maven
+WORKDIR /app
 
-VOLUME /tmp
+COPY ./pom.xml ./
+RUN mvn dependency:go-offline -B
 
-EXPOSE 8080
+COPY ./src ./src
 
-ARG JAR_FILE=target/waitingRoom-0.0.1-SNAPSHOT.jar
+RUN mvn clean package -DskipTests
 
-COPY ${JAR_FILE} app.jar
+#FROM openjdk:21-jdk
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY --from=maven /app/target/waiting-room-0.0.1-SNAPSHOT.jar ./app.jar
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+EXPOSE 8081
+CMD ["java", "-jar", "app.jar"]

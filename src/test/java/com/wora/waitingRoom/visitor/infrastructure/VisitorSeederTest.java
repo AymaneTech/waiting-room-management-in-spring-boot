@@ -1,6 +1,7 @@
 package com.wora.waitingRoom.visitor.infrastructure;
 
-import com.wora.waitingRoom.visitor.domain.VisitorRepository;
+import com.wora.waitingroom.visitor.domain.VisitorRepository;
+import com.wora.waitingroom.visitor.infrastructure.VisitorSeeder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

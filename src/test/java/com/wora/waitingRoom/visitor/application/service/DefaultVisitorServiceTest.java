@@ -1,10 +1,11 @@
 package com.wora.waitingRoom.visitor.application.service;
 
-import com.wora.waitingRoom.common.domain.exception.EntityNotFoundException;
-import com.wora.waitingRoom.visitor.application.service.impl.DefaultVisitorService;
-import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.visitor.domain.VisitorId;
-import com.wora.waitingRoom.visitor.domain.VisitorRepository;
+import com.wora.waitingroom.common.domain.exception.EntityNotFoundException;
+import com.wora.waitingroom.visitor.application.service.VisitorService;
+import com.wora.waitingroom.visitor.application.service.impl.DefaultVisitorService;
+import com.wora.waitingroom.visitor.domain.Visitor;
+import com.wora.waitingroom.visitor.domain.VisitorId;
+import com.wora.waitingroom.visitor.domain.VisitorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

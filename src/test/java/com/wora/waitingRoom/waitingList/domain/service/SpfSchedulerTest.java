@@ -1,11 +1,12 @@
 package com.wora.waitingRoom.waitingList.domain.service;
 
-import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.waitingList.domain.entity.Visit;
-import com.wora.waitingRoom.waitingList.domain.entity.WaitingList;
-import com.wora.waitingRoom.waitingList.domain.service.impl.SpfScheduler;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
-import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
+import com.wora.waitingroom.visitor.domain.Visitor;
+import com.wora.waitingroom.waitinglist.domain.entity.Visit;
+import com.wora.waitingroom.waitinglist.domain.entity.WaitingList;
+import com.wora.waitingroom.waitinglist.domain.service.Scheduler;
+import com.wora.waitingroom.waitinglist.domain.service.impl.SpfScheduler;
+import com.wora.waitingroom.waitinglist.domain.vo.Algorithm;
+import com.wora.waitingroom.waitinglist.domain.vo.WaitingListId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
