@@ -1,19 +1,22 @@
 package com.wora.waitingRoom.waitingList.application.service;
 
-import com.wora.waitingRoom.common.domain.exception.EntityNotFoundException;
-import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.waitingList.application.dto.response.VisitResponseDto;
-import com.wora.waitingRoom.waitingList.application.mapper.VisitMapper;
-import com.wora.waitingRoom.waitingList.application.service.impl.DefaultVisitsSchedulingService;
-import com.wora.waitingRoom.waitingList.domain.entity.Visit;
-import com.wora.waitingRoom.waitingList.domain.entity.WaitingList;
-import com.wora.waitingRoom.waitingList.domain.repository.VisitRepository;
-import com.wora.waitingRoom.waitingList.domain.repository.WaitingListRepository;
-import com.wora.waitingRoom.waitingList.domain.service.Scheduler;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
-import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
+import com.wora.waitingroom.common.domain.exception.EntityNotFoundException;
+import com.wora.waitingroom.visitor.domain.Visitor;
+import com.wora.waitingroom.waitinglist.application.dto.response.VisitResponseDto;
+import com.wora.waitingroom.waitinglist.application.mapper.VisitMapper;
+import com.wora.waitingroom.waitinglist.application.service.VisitsSchedulingService;
+import com.wora.waitingroom.waitinglist.application.service.impl.DefaultVisitsSchedulingService;
+import com.wora.waitingroom.waitinglist.domain.entity.Visit;
+import com.wora.waitingroom.waitinglist.domain.entity.WaitingList;
+import com.wora.waitingroom.waitinglist.domain.repository.VisitRepository;
+import com.wora.waitingroom.waitinglist.domain.repository.WaitingListRepository;
+import com.wora.waitingroom.waitinglist.domain.service.Scheduler;
+import com.wora.waitingroom.waitinglist.domain.service.SchedulerFactory;
+import com.wora.waitingroom.waitinglist.domain.service.impl.FifoScheduler;
+import com.wora.waitingroom.waitinglist.domain.vo.Algorithm;
+import com.wora.waitingroom.waitinglist.domain.vo.Mode;
+import com.wora.waitingroom.waitinglist.domain.vo.Status;
+import com.wora.waitingroom.waitinglist.domain.vo.WaitingListId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,6 +26,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -38,30 +42,37 @@ class DefaultVisitsSchedulingServiceTest {
     @Mock
     private WaitingListRepository waitingListRepository;
     @Mock
-    private Scheduler scheduler;
+    private SchedulerFactory schedulerFactory;
     @Mock
     private VisitMapper mapper;
+    private Scheduler scheduler;
     private VisitsSchedulingService underTest;
 
-    private WaitingListId waitingListId;
+    private WaitingList waitingList;
 
 
     @BeforeEach
     void setup() {
-        this.underTest = new DefaultVisitsSchedulingService(repository, waitingListRepository, scheduler, mapper);
-        waitingListId = new WaitingListId(2L);
+        this.underTest = new DefaultVisitsSchedulingService(repository, waitingListRepository, schedulerFactory, mapper);
+        this.scheduler = new FifoScheduler();
+        waitingList = WaitingList.builder()
+                .id(new WaitingListId(2L))
+                .date(LocalDate.now())
+                .capacity(30)
+                .mode(Mode.FULL_TIME)
+                .algorithm(Algorithm.FIFO)
+                .build();
     }
 
     @Test
     void givenEmptyVisitsList_whenScheduleVisits_thenReturnEmptyList() {
-        given(waitingListRepository.existsById(waitingListId)).willReturn(true);
-        given(repository.findAllByWaitingListIdAndStatus(waitingListId, Status.WAITING)).willReturn(List.of());
-        given(scheduler.schedule(List.of())).willReturn(List.of());
+        given(waitingListRepository.findById(any(WaitingListId.class))).willReturn(Optional.of(waitingList));
+        given(repository.findAllByWaitingListIdAndStatus(waitingList.getId(), Status.WAITING)).willReturn(List.of());
+        given(schedulerFactory.getScheduler(any(Algorithm.class))).willReturn(scheduler);
 
-        Page<VisitResponseDto> actual = underTest.scheduleVisits(waitingListId);
+        Page<VisitResponseDto> actual = underTest.scheduleVisits(waitingList.getId());
 
         assertThat(actual.isEmpty()).isTrue();
-        verify(scheduler).schedule(List.of());
         verify(mapper, never()).toResponseDto(any(Visit.class));
     }
 
@@ -83,21 +94,21 @@ class DefaultVisitsSchedulingServiceTest {
                 .map(v -> new Visit(v, waitingList, null, null))
                 .toList();
 
-        given(waitingListRepository.existsById(waitingListId)).willReturn(true);
-        given(repository.findAllByWaitingListIdAndStatus(waitingListId, Status.WAITING)).willReturn(visits);
-        given(scheduler.schedule(visits)).willReturn(visits);
+        given(waitingListRepository.findById(waitingList.getId())).willReturn(Optional.of(waitingList));
+        given(repository.findAllByWaitingListIdAndStatus(waitingList.getId(), Status.WAITING)).willReturn(visits);
+        given(schedulerFactory.getScheduler(any(Algorithm.class))).willReturn(scheduler);
 
-        Page<VisitResponseDto> actual = underTest.scheduleVisits(waitingListId);
+        Page<VisitResponseDto> actual = underTest.scheduleVisits(waitingList.getId());
 
         assertThat(actual.getTotalElements()).isEqualTo(4);
     }
 
     @Test
     void givenNotExistsVisitId_whenScheduleVisits_thenThrowEntityNotFoundException() {
-        given(waitingListRepository.existsById(waitingListId)).willReturn(false);
+        given(waitingListRepository.findById(waitingList.getId())).willReturn(Optional.empty());
 
         assertThatExceptionOfType(EntityNotFoundException.class)
-                .isThrownBy(() -> underTest.scheduleVisits(waitingListId))
+                .isThrownBy(() -> underTest.scheduleVisits(waitingList.getId()))
                 .withMessage("waiting list with id 2 not found");
     }
 }

@@ -1,15 +1,16 @@
 package com.wora.waitingRoom.waitingList.infrastructure.web;
 
-import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.visitor.domain.VisitorRepository;
-import com.wora.waitingRoom.waitingList.application.dto.request.VisitRequestDto;
-import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListRequestDto;
-import com.wora.waitingRoom.waitingList.application.service.VisitService;
-import com.wora.waitingRoom.waitingList.application.service.WaitingListService;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Status;
-import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
+import com.wora.waitingroom.Application;
+import com.wora.waitingroom.visitor.domain.Visitor;
+import com.wora.waitingroom.visitor.domain.VisitorRepository;
+import com.wora.waitingroom.waitinglist.application.dto.request.VisitRequestDto;
+import com.wora.waitingroom.waitinglist.application.dto.request.WaitingListRequestDto;
+import com.wora.waitingroom.waitinglist.application.service.VisitService;
+import com.wora.waitingroom.waitinglist.application.service.WaitingListService;
+import com.wora.waitingroom.waitinglist.domain.vo.Algorithm;
+import com.wora.waitingroom.waitinglist.domain.vo.Mode;
+import com.wora.waitingroom.waitinglist.domain.vo.Status;
+import com.wora.waitingroom.waitinglist.domain.vo.WaitingListId;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +30,13 @@ import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Transactional
 class SchedulingControllerIntegrationTest {
-    private final static String REQUEST_MAPPING = "/api/v1/visits";
+    private static final String REQUEST_MAPPING = "/api/v1/visits";
 
     private final MockMvc mockMvc;
     private final WaitingListService waitingListService;
@@ -43,11 +44,10 @@ class SchedulingControllerIntegrationTest {
     private final VisitService visitService;
 
     private Long waitingListId;
-    private List<Visitor> visitors;
 
     @BeforeEach
     void setup() {
-        visitors = visitorRepository.findAll();
+        List<Visitor> visitors = visitorRepository.findAll();
         waitingListId = waitingListService.create(
                 new WaitingListRequestDto(LocalDate.now(), 10, Mode.PART_TIME, Algorithm.FIFO)
         ).id();

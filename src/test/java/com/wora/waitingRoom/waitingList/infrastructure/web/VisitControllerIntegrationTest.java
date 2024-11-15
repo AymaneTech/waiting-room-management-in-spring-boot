@@ -1,16 +1,17 @@
 package com.wora.waitingRoom.waitingList.infrastructure.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wora.waitingRoom.visitor.domain.Visitor;
-import com.wora.waitingRoom.visitor.domain.VisitorId;
-import com.wora.waitingRoom.visitor.domain.VisitorRepository;
-import com.wora.waitingRoom.waitingList.application.dto.request.VisitRequestDto;
-import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListRequestDto;
-import com.wora.waitingRoom.waitingList.application.service.VisitService;
-import com.wora.waitingRoom.waitingList.application.service.WaitingListService;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
-import com.wora.waitingRoom.waitingList.domain.valueObject.WaitingListId;
+import com.wora.waitingroom.Application;
+import com.wora.waitingroom.visitor.domain.Visitor;
+import com.wora.waitingroom.visitor.domain.VisitorId;
+import com.wora.waitingroom.visitor.domain.VisitorRepository;
+import com.wora.waitingroom.waitinglist.application.dto.request.VisitRequestDto;
+import com.wora.waitingroom.waitinglist.application.dto.request.WaitingListRequestDto;
+import com.wora.waitingroom.waitinglist.application.service.VisitService;
+import com.wora.waitingroom.waitinglist.application.service.WaitingListService;
+import com.wora.waitingroom.waitinglist.domain.vo.Algorithm;
+import com.wora.waitingroom.waitinglist.domain.vo.Mode;
+import com.wora.waitingroom.waitinglist.domain.vo.WaitingListId;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,19 +27,19 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 
-import static com.wora.waitingRoom.common.infrastructure.web.GlobalExceptionHandler.ENTITY_NOT_FOUND_MESSAGE;
+import static com.wora.waitingroom.common.infrastructure.web.GlobalExceptionHandler.ENTITY_NOT_FOUND_MESSAGE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 class VisitControllerIntegrationTest {
-    private final static String REQUEST_MAPPING = "/api/v1/visits";
+    private static final String REQUEST_MAPPING = "/api/v1/visits";
 
     private final MockMvc mockMvc;
     private final ObjectMapper objectMapper;

@@ -1,12 +1,13 @@
 package com.wora.waitingRoom.waitingList.infrastructure.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wora.waitingRoom.config.configurationProperties.WaitingListConfigurationProperties;
-import com.wora.waitingRoom.waitingList.application.dto.request.WaitingListRequestDto;
-import com.wora.waitingRoom.waitingList.application.dto.response.WaitingListResponseDto;
-import com.wora.waitingRoom.waitingList.application.service.WaitingListService;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Algorithm;
-import com.wora.waitingRoom.waitingList.domain.valueObject.Mode;
+import com.wora.waitingroom.Application;
+import com.wora.waitingroom.config.configurationProperties.WaitingListConfigurationProperties;
+import com.wora.waitingroom.waitinglist.application.dto.request.WaitingListRequestDto;
+import com.wora.waitingroom.waitinglist.application.dto.response.WaitingListResponseDto;
+import com.wora.waitingroom.waitinglist.application.service.WaitingListService;
+import com.wora.waitingroom.waitinglist.domain.vo.Algorithm;
+import com.wora.waitingroom.waitinglist.domain.vo.Mode;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,19 +23,19 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 
-import static com.wora.waitingRoom.common.infrastructure.web.GlobalExceptionHandler.ENTITY_NOT_FOUND_MESSAGE;
-import static com.wora.waitingRoom.common.infrastructure.web.GlobalExceptionHandler.VALIDATION_FAILED_MESSAGE;
+import static com.wora.waitingroom.common.infrastructure.web.GlobalExceptionHandler.ENTITY_NOT_FOUND_MESSAGE;
+import static com.wora.waitingroom.common.infrastructure.web.GlobalExceptionHandler.VALIDATION_FAILED_MESSAGE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 class WaitListControllerIntegrationTest {
-    private final static String REQUEST_MAPPING = "/api/v1/waiting-lists";
+    private static final String REQUEST_MAPPING = "/api/v1/waiting-lists";
 
     private final MockMvc mockMvc;
     private final WaitingListService service;
